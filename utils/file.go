@@ -36,15 +36,15 @@ func WriteFile(data []byte, filename string) {
 	var f *os.File
 	var err1 error
 	file := basePath + "/" + filename
-	if checkFileIsExist(filename) { //如果文件存在
-		f, err1 = os.OpenFile(file, os.O_APPEND, 0666) //打开文件
+	if checkFileIsExist(filename) {
+		f, err1 = os.OpenFile(file, os.O_APPEND, 0666)
 		check(err1)
 	} else {
-		f, err1 = os.Create(file) //创建文件
+		f, err1 = os.Create(file)
 		check(err1)
 	}
 	defer f.Close()
-	_, err1 = f.Write(data) //写入文件(字节数组)
+	_, err1 = f.Write(data)
 	check(err1)
 }
 func check(e error) {

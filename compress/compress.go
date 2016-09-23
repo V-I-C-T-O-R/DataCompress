@@ -1,16 +1,13 @@
 package compress
 
 import (
-	"bytes"
-	"encoding/gob"
 	"encoding/json"
-	"fmt"
 	"github.com/V-I-C-T-O-R/DataCompress/utils"
 	"reflect"
 	"strconv"
 )
 
-var markMap map[string][]string
+var MarkMap map[string][]string
 
 type MesMark struct {
 	mark  bool
@@ -19,30 +16,25 @@ type MesMark struct {
 }
 
 func init() {
-	markMap = make(map[string][]string)
+	MarkMap = make(map[string][]string)
 }
 func DoCompress(file string, output string) {
 	var content interface{}
 	s := utils.ReadF(file)
 	json.Unmarshal(s, &content)
-	iter := (content).(map[string]interface{})
-	m := &MesMark{mark: true, value: iter}
-	fmt.Println("baseMap(m)", baseMap(m))
-	data, _ := GetBytes(baseMap(m).(map[interface{}]interface{}))
-	fmt.Println(data)
-	fmt.Println(json.Marshal(baseMap(m).(map[interface{}]interface{})))
+	data, _ := json.Marshal(baseMap(&MesMark{mark: true, value: (content).(map[string]interface{})}))
 	utils.WriteFile(data, output)
 }
 func baseMap(m *MesMark) (x interface{}) {
 	if m.mark {
-		x = make(map[interface{}]interface{})
+		x = make(map[string]interface{})
 		for k, v := range m.value.(map[string]interface{}) {
 			switch v.(type) {
 			case bool, byte, int, int8, int16, int32, int64, uint16, uint32, uint64, float32, float64, string:
-				x.(map[interface{}]interface{})[k] = v
+				x.(map[string]interface{})[k] = v
 				continue
 			case []interface{}:
-				x.(map[interface{}]interface{})[k] = baseMap(&MesMark{mark: false, value: v, key: k})
+				x.(map[string]interface{})[k] = baseMap(&MesMark{mark: false, value: v, key: k})
 			default:
 				m.value.(map[string]interface{})[k] = baseMap(&MesMark{mark: true, value: v, key: k})
 			}
@@ -73,7 +65,7 @@ func baseMap(m *MesMark) (x interface{}) {
 				str := toString(k) + ":" + strconv.Itoa(v)
 				slice = append(slice, str)
 			}
-			markMap[m.key.(string)] = slice
+			MarkMap[m.key.(string)] = slice
 			x = slice
 		} else {
 			x = listMap
@@ -114,13 +106,4 @@ func toString(v interface{}) (s string) {
 		s = strconv.Itoa(int(value.Int())) + ":" + "14"
 	}
 	return
-}
-func GetBytes(key interface{}) ([]byte, error) {
-	var buf bytes.Buffer
-	enc := gob.NewEncoder(&buf)
-	err := enc.Encode(key)
-	if err != nil {
-		return nil, err
-	}
-	return buf.Bytes(), nil
 }

@@ -1,18 +1,16 @@
-package main
+package compress
 
 import (
+	"bytes"
+	"encoding/gob"
 	"encoding/json"
-	"flag"
 	"fmt"
-	"io/ioutil"
-	"os"
-	"path"
+	"github.com/V-I-C-T-O-R/DataCompress/utils"
 	"reflect"
-	"runtime"
 	"strconv"
 )
 
-var FilePath string
+var markMap map[string][]string
 
 type MesMark struct {
 	mark  bool
@@ -20,20 +18,20 @@ type MesMark struct {
 	value interface{}
 }
 
-var markMap map[string][]string
-
 func init() {
 	markMap = make(map[string][]string)
-	flag.StringVar(&FilePath, "FilePath", "example.json", "read to compress's file")
 }
-func main() {
-	flag.Parse()
+func DoCompress(file string, output string) {
 	var content interface{}
-	s := readF()
+	s := utils.ReadF(file)
 	json.Unmarshal(s, &content)
 	iter := (content).(map[string]interface{})
 	m := &MesMark{mark: true, value: iter}
 	fmt.Println("baseMap(m)", baseMap(m))
+	data, _ := GetBytes(baseMap(m).(map[interface{}]interface{}))
+	fmt.Println(data)
+	fmt.Println(json.Marshal(baseMap(m).(map[interface{}]interface{})))
+	utils.WriteFile(data, output)
 }
 func baseMap(m *MesMark) (x interface{}) {
 	if m.mark {
@@ -117,17 +115,12 @@ func toString(v interface{}) (s string) {
 	}
 	return
 }
-func readF() []byte {
-	_, filename, _, _ := runtime.Caller(1)
-	basePath := path.Join(path.Dir(filename), "..", "example")
-	file, err := os.Open(basePath + "/" + FilePath)
+func GetBytes(key interface{}) ([]byte, error) {
+	var buf bytes.Buffer
+	enc := gob.NewEncoder(&buf)
+	err := enc.Encode(key)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
-	defer file.Close()
-	content, err := ioutil.ReadAll(file)
-	if err != nil {
-		panic(err)
-	}
-	return content
+	return buf.Bytes(), nil
 }

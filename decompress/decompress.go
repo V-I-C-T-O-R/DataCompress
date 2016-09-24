@@ -3,7 +3,6 @@ package decompress
 import (
 	"encoding/json"
 	"errors"
-	"fmt"
 	"github.com/V-I-C-T-O-R/DataCompress/compress"
 	"github.com/V-I-C-T-O-R/DataCompress/utils"
 	"log"
@@ -42,7 +41,6 @@ func DoDeCompress(file string) (data []byte, err error) {
 		return
 	}
 	data, _ = json.Marshal(baseMap(&compress.MesMark{Mark: true, Value: (content).(map[string]interface{})}))
-	fmt.Println(string(data))
 	log.Println("data decompress complete")
 	return
 }

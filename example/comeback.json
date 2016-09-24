@@ -1,0 +1,1 @@
+{"description":"json转对象","functions":[1,1,4,2,2,65,3,3,7],"name":"json to struct","object":[{"habbit":["swimm","game","play"],"name":"xiaoming","sex":"male"},{"habbit":["game","play","swimm"],"name":"xiaohua","sex":"female"}],"todo":["生成java pojo"],"version":1}

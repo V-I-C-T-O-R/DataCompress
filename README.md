@@ -15,9 +15,8 @@ DataCompress针对大数据中json数组数据存储冗余的情况，进行数�
     默认文件提取位置位于项目的example目录下，即可以将需要还原的json文件存放在这里，然后终端切换到项目根目录下，运行
     decompress.go文件，如：
     go run decompress.go -filePath="output.json" -fileOutPath="comeback.json"
-    其中，`filePath`表示的需要还原的json文件名称
+    其中，`filePath`表示的需要还原的json文件名称，`fileOutPath`表示还原后产生的新文件的名称
 
-=====
 ####`须知:`
   `待还原的json文件必须是使用项目压缩之后的json文件`
 ###`补充:`

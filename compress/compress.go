@@ -9,17 +9,12 @@ import (
 	"strconv"
 )
 
-var MarkMap map[string][]string
-
 type MesMark struct {
 	Mark  bool
 	Key   interface{}
 	Value interface{}
 }
 
-func init() {
-	MarkMap = make(map[string][]string)
-}
 func DoCompress(file string, output string) error {
 	if !utils.CheckFileIsExist(file) {
 		log.Println("file no exist")
@@ -89,7 +84,6 @@ func baseMap(m *MesMark) (x interface{}) {
 				str := toString(k) + "::" + strconv.Itoa(v)
 				slice = append(slice, str)
 			}
-			MarkMap[m.Key.(string)] = slice
 			x = slice
 		} else {
 			x = listMap
@@ -121,9 +115,9 @@ func toString(v interface{}) (s string) {
 	case reflect.Uint64:
 		s = strconv.Itoa(int(value.Int())) + "::" + "10"
 	case reflect.Float32:
-		s = strconv.FormatFloat(float64(value.Float()), 'g', 3, 32) + "::" + "11"
+		s = strconv.FormatFloat(float64(value.Float()), 'g', 8, 32) + "::" + "11"
 	case reflect.Float64:
-		s = strconv.FormatFloat(float64(value.Float()), 'g', 3, 32) + "::" + "12"
+		s = strconv.FormatFloat(float64(value.Float()), 'g', 8, 32) + "::" + "12"
 	case reflect.String:
 		s = value.String() + "::" + "13"
 	default:

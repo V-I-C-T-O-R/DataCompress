@@ -25,18 +25,12 @@ func CheckFileIsExist(filename string) bool {
 	return exist
 }
 func WriteFile(data []byte, filename string) {
-	var f *os.File
-	var err1 error
-	if CheckFileIsExist(filename) {
-		f, err1 = os.OpenFile(filename, os.O_APPEND, 0666)
-		check(err1)
-	} else {
-		f, err1 = os.Create(filename)
-		check(err1)
+	if !CheckFileIsExist(filename) {
+		_, err := os.Create(filename)
+		check(err)
 	}
-	defer f.Close()
-	_, err1 = f.Write(data)
-	check(err1)
+	err := ioutil.WriteFile(filename, data, 0644)
+	check(err)
 }
 func check(e error) {
 	if e != nil {

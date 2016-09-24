@@ -132,7 +132,7 @@ func toValue(v interface{}, value string) (s interface{}) {
 	return
 }
 func parse(s interface{}) interface{} {
-	str := strings.Split(s.(string), "@:")
+	str := strings.Split(s.(string), "::")
 	k, _ := matchMap[invertToInt(str[1])]
 	value := toValue(k, str[0])
 	var slice []interface{}

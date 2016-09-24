@@ -1,17 +1,26 @@
 {
   "name": "json to struct",
   "description": "json转对象",
-  "functions": [1,4,2,65,2,1,3,7,3],
-  "todo": ["生成java pojo"],
-  "version": 1.0,
-  "object":[{
+  "functions": [1,4,2,65,2,1,3,7,3,1,4,2,65,2,1,3,7,3,1,4,2,65,2,1,3,7,3,1,4,2,65,2,1,3,7,3,1,4,2,65,2,1,3,7,3,2,1,3,7,3,1,4,2,65,2,1,3,7,3],
+  "todo": ["生成java pojo","生成java pojo","生成java pojo","生成java pojo","生成java pojo","生成java pojo","生成java pojo"],
+  "object":[
+    {
     "name":"xiaoming",
-    "sex":"male",
-    "habbit":["game","play","swimm"]
-  },{
+    "sub":[{
+      "name":"n",
+      "local":[54,23423,12,332,34,23423,12,332,34,23423,12,332,34,23423,12,332,34,23423,12,332,34,23423,12,332,34,23423,12,332,34,23423,12,332,34]
+    }
+    ],
+    "habbit":["game","play","swimm","game","play","swimm","game","play","swimm","game","play","swimm"]
+   },
+    {
     "name":"xiaohua",
-    "sex":"female",
-    "habbit":["game","play","swimm"]
+    "sub":[
+      {
+      "name":"n",
+      "local":[54,23423,12,332,34,5,3,24,3,5,3,6,7,467,734,5,3,24,3,5,3,6,7,467,734,5,3,24,3,5,3,6,7,467,7]
+    }],
+      "habbit":["game","play","swimm"]
+    }
+    ]
   }
-]
-}

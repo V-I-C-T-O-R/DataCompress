@@ -21,7 +21,8 @@ DataCompress针对大数据中json数组数据存储冗余的情况，进行数�
 ####`须知:`
   `待还原的json文件必须是使用项目压缩之后的json文件`
 ###`补充:`
-    除了上述的使用方式外，还可以直接调用compress文件夹中compress.go文件的接口直接进行压缩，调用decompress文件夹<br>中的decompress文件夹中的decompress.go文件的接口进行还原输出.
+除了上述的使用方式外，还可以直接调用compress文件夹中compress.go文件的接口直接进行压缩，调用decompress文件夹中的
+decompress文件夹中的decompress.go文件的接口进行还原输出.
 
 例如：<br>
 compress/compress.go中<br>

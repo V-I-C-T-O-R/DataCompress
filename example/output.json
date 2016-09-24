@@ -1,1 +1,36 @@
-{"description":"json转对象","functions":["7:12:1","1:12:2","4:12:1","2:12:2","65:12:1","3:12:2"],"name":"json to struct","object":[{"habbit":["game:13:1","play:13:1","swimm:13:1"],"name":"xiaoming","sex":"male"},{"habbit":["game:13:1","play:13:1","swimm:13:1"],"name":"xiaohua","sex":"female"}],"todo":["生成java pojo:13:1"],"version":1}
+{
+  "description": "json转对象",
+  "functions": [
+    "1@:12@:2",
+    "4@:12@:1",
+    "2@:12@:2",
+    "65@:12@:1",
+    "3@:12@:2",
+    "7@:12@:1"
+  ],
+  "name": "json to struct",
+  "object": [
+    {
+      "habbit": [
+        "swimm@:13@:1",
+        "game@:13@:1",
+        "play@:13@:1"
+      ],
+      "name": "xiaoming",
+      "sex": "male"
+    },
+    {
+      "habbit": [
+        "game@:13@:1",
+        "play@:13@:1",
+        "swimm@:13@:1"
+      ],
+      "name": "xiaohua",
+      "sex": "female"
+    }
+  ],
+  "todo": [
+    "生成java pojo@:13@:1"
+  ],
+  "version": 1
+}

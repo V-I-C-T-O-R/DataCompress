@@ -20,11 +20,11 @@ DataCompress针对大数据中json数组数据存储冗余的情况，进行数�
 ####`须知:`
   `待还原的json文件必须是使用项目压缩之后的json文件`
 ##`补充:`
-除了上述的使用方式外，还可以直接调用compress/compress.go文件的接口直接进行压缩，调用decompress/decompress.go文件的接口进行还原输出<br>
+除了上述的使用方式外，还可以调用compress/compress.go文件的接口直接进行压缩，调用decompress/decompress.go文件的接口进行还原输出。<br>
 例如：<br>
 compress/compress.go中<br>
 `DoCompress(file string, outputstring)`函数直接传入待解析和输出的文件的绝对地址，即可进行压缩<br>
-`DoStreamCompress(b []byte, output string)`函数直接传入[]byte数据进行解析,传入output的绝对路径进行存储<br>
+`DoStreamCompress(b []byte, output string)`函数直接传入[]byte数据进行解析，传入output的绝对路径进行存储<br>
 decompress/decompress.go中<br>
 `DoDeCompress(file string) (data []byte, err error)`函数直接传入待解析文件的绝对地址，即可进行还原出[]byte数据<br>
 `DoDeCompressFromData(b []byte) (data []byte, err error)`函数直接传入[]byte数据进还原析，，即可进行还原出[]byte数据<br>

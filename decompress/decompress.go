@@ -12,19 +12,10 @@ import (
 )
 
 var matchMap = map[int]interface{}{
-	1:  reflect.Bool,
-	2:  reflect.Int,
-	3:  reflect.Int8,
-	4:  reflect.Int16,
-	5:  reflect.Int32,
-	6:  reflect.Int64,
-	7:  reflect.Uint8,
-	8:  reflect.Uint16,
-	9:  reflect.Uint32,
-	10: reflect.Uint64,
-	11: reflect.Float32,
-	12: reflect.Float64,
-	13: reflect.String,
+	1: reflect.Bool,
+	2: reflect.Int,
+	3: reflect.Float64,
+	4: reflect.String,
 }
 
 func DoDeCompress(file string) (data []byte, err error) {
@@ -106,24 +97,6 @@ func toValue(v interface{}, value string) (s interface{}) {
 		s, _ = strconv.ParseBool(value)
 	case reflect.Int:
 		s, _ = strconv.Atoi(value)
-	case reflect.Int8:
-		s, _ = strconv.ParseInt(value, 10, 8)
-	case reflect.Int16:
-		s, _ = strconv.ParseInt(value, 10, 16)
-	case reflect.Int32:
-		s, _ = strconv.ParseInt(value, 10, 32)
-	case reflect.Int64:
-		s, _ = strconv.ParseInt(value, 10, 64)
-	case reflect.Uint8:
-		s, _ = strconv.ParseUint(value, 10, 8)
-	case reflect.Uint16:
-		s, _ = strconv.ParseUint(value, 10, 16)
-	case reflect.Uint32:
-		s, _ = strconv.ParseUint(value, 10, 32)
-	case reflect.Uint64:
-		s, _ = strconv.ParseUint(value, 10, 64)
-	case reflect.Float32:
-		s, _ = strconv.ParseFloat(value, 32)
 	case reflect.Float64:
 		s, _ = strconv.ParseFloat(value, 64)
 	case reflect.String:

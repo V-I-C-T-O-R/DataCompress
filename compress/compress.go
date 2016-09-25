@@ -98,30 +98,10 @@ func toString(v interface{}) (s string) {
 		s = strconv.FormatBool(value.Bool()) + "::" + "1"
 	case reflect.Int:
 		s = strconv.Itoa(int(value.Int())) + "::" + "2"
-	case reflect.Int8:
-		s = strconv.Itoa(int(value.Int())) + "::" + "3"
-	case reflect.Int16:
-		s = strconv.Itoa(int(value.Int())) + "::" + "4"
-	case reflect.Int32:
-		s = strconv.Itoa(int(value.Int())) + "::" + "5"
-	case reflect.Int64:
-		s = strconv.Itoa(int(value.Int())) + "::" + "6"
-	case reflect.Uint8:
-		s = strconv.Itoa(int(value.Int())) + "::" + "7"
-	case reflect.Uint16:
-		s = strconv.Itoa(int(value.Int())) + "::" + "8"
-	case reflect.Uint32:
-		s = strconv.Itoa(int(value.Int())) + "::" + "9"
-	case reflect.Uint64:
-		s = strconv.Itoa(int(value.Int())) + "::" + "10"
-	case reflect.Float32:
-		s = strconv.FormatFloat(float64(value.Float()), 'g', 8, 32) + "::" + "11"
 	case reflect.Float64:
-		s = strconv.FormatFloat(float64(value.Float()), 'g', 8, 32) + "::" + "12"
+		s = strconv.FormatFloat(float64(value.Float()), 'g', 8, 64) + "::" + "3"
 	case reflect.String:
-		s = value.String() + "::" + "13"
-	default:
-		s = strconv.Itoa(int(value.Int())) + "::" + "14"
+		s = value.String() + "::" + "4"
 	}
 	return
 }
